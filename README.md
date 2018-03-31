@@ -7,7 +7,7 @@
 - Redux && Redux Devtools
 
 # Basic installation
-### Reuirement System
+### Requirement System
 - Nodejs ref:https://nodejs.org/en/
 - React ref:https://reactjs.org/
 
