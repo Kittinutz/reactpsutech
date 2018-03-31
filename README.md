@@ -6,8 +6,8 @@
 - Basic HTML 
 - Redux && Redux Devtools
 
-#Basic installation
-###Reuirement System
+# Basic installation
+### Reuirement System
 - Nodejs ref:https://nodejs.org/en/
 - React ref:https://reactjs.org/
 
@@ -18,11 +18,11 @@ $ npm install
 $ npm start
 
 ```
-#Redux devtool configuration
+# Redux devtool configuration
 ````
 window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 ````
-#Contructure project
+# Contructure project
 ````
 psuteach/
     README.md
@@ -51,4 +51,4 @@ psuteach/
     "reselect": "^3.0.1"
   },
 ```
-#Enjoy ~
+# Enjoy ~
