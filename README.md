@@ -22,7 +22,7 @@ $ npm start
 ````
 window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 ````
-# Contructure project
+# Folder Structure
 ````
 psuteach/
     README.md
