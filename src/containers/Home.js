@@ -1,16 +1,17 @@
 import React, {Component} from 'react';
+import {filtering} from "../actions/index";
 import {connect} from 'react-redux';
-const WhenGrowup = [
-    {id:1 , todos:"Sordier"},
-    {id:2 , todos:"Docter"},
-    {id:3 , todos:"teacher"},
-    {id:4 , todos:"police"},
-    ]
+// const WhenGrowup = [
+//     {id:1 , todos:"Sordier"},
+//     {id:2 , todos:"Docter"},
+//     {id:3 , todos:"teacher"},
+//     {id:4 , todos:"police"},
+//     ]
 class Home extends Component {
    constructor(props){
        super(props)
        this.state={
-           name:"Kittinut",
+           id:"",
            surname:"Pramhan"
        }
    }
@@ -21,8 +22,13 @@ class Home extends Component {
       this.setState({[name]:value});
 
     }
+    handleSubmit =(e)=>{
+       e.preventDefault();
+       this.props.filtering(this.state.id);
+    }
 
     render() {
+       const  {WhenGrowup} = this.props;
        console.log(this.props);
        console.log('state',this.state);
         return (
@@ -37,34 +43,36 @@ class Home extends Component {
                 </p>
                 <ul>
                     {
-                        WhenGrowup.filter(value => value.id != 1).map(value => {
-                            return <List id={value.id} todos={value.todos}/>
+                        WhenGrowup.map(value => {
+                            return <List key={value.id} id={value.id} todos={value.todos}/>
                         })
                     }
 
                 </ul>
-               name: <input type="text" name="name"  onChange={this.handleChange}/>
-              surname:  <input type="text" name="surname"  onChange={this.handleChange}/>
+                <form  onSubmit={this.handleSubmit}>
+                <input type="text" name="id" onChange={this.handleChange}/>
+                <button type="submit">Submit</button>
+                </form>
             </div>
         )
     }
 }
 
 const List = (props) => {
-  const {id,todos} = props;
+  const {todos} = props;
     return (
 
-            <li key={id}>
+            <li >
                 {todos}
             </li>
 
     )
 }
 
-mapStateToProps = ( { WhenGrowup }) =>{
+const mapStateToProps = ( { WhenGrowup }) =>{
     return {
         WhenGrowup
     }
 }
 
-export default connect(mapStateToProps,null)(Home);
+export default connect(mapStateToProps,{filtering})(Home);

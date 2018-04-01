@@ -1,3 +1,5 @@
+import {FILLTERING} from "../actions/index";
+
 const initialState = [
     {id:1 , todos:"Programmer"},
     {id:2 , todos:"Docter"},
@@ -7,5 +9,12 @@ const initialState = [
 
 export default function (state=initialState,action) {
 
-    return state;
+    switch (action.type){
+        case
+            FILLTERING:
+            return state.filter(value=>value.id !== parseInt(action.payload))
+        default:
+            return state = initialState;
+    }
+    return initialState;
 }
