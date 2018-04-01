@@ -1,5 +1,11 @@
 import React, {Component} from 'react';
-
+import {connect} from 'react-redux';
+const WhenGrowup = [
+    {id:1 , todos:"Sordier"},
+    {id:2 , todos:"Docter"},
+    {id:3 , todos:"teacher"},
+    {id:4 , todos:"police"},
+    ]
 class Home extends Component {
    constructor(props){
        super(props)
@@ -17,6 +23,7 @@ class Home extends Component {
     }
 
     render() {
+       console.log(this.props);
        console.log('state',this.state);
         return (
             <div>
@@ -28,7 +35,14 @@ class Home extends Component {
                     name:{this.state.name} <br/>
                     surname:{this.state.surname}
                 </p>
-                <List foo={this.state.name} bar={this.state.surname}/>
+                <ul>
+                    {
+                        WhenGrowup.filter(value => value.id != 1).map(value => {
+                            return <List id={value.id} todos={value.todos}/>
+                        })
+                    }
+
+                </ul>
                name: <input type="text" name="name"  onChange={this.handleChange}/>
               surname:  <input type="text" name="surname"  onChange={this.handleChange}/>
             </div>
@@ -37,14 +51,20 @@ class Home extends Component {
 }
 
 const List = (props) => {
-  const {foo,bar} = props;
+  const {id,todos} = props;
     return (
-        <ul>
-            <li>
-                hello test {foo +" "+ bar}
+
+            <li key={id}>
+                {todos}
             </li>
-        </ul>
+
     )
 }
 
-export default Home;
+mapStateToProps = ( { WhenGrowup }) =>{
+    return {
+        WhenGrowup
+    }
+}
+
+export default connect(mapStateToProps,null)(Home);
