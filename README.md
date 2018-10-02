@@ -51,4 +51,4 @@ psuteach/
     "reselect": "^3.0.1"
   },
 ```
-# Enjoy ~
+# Enjoy ~!!
